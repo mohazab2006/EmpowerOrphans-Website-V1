@@ -80,3 +80,14 @@ function scrollGallery(direction) {
   // Move the gallery to the current image
   gallery.style.transform = `translateX(-${currentImageIndex * 100}%)`;
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contact-form");
+  const successMessage = document.getElementById("success-message");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent the default form submission behavior
+    successMessage.style.display = "block"; // Show the thank-you message
+    form.reset(); // Optionally reset the form fields
+  });
+});

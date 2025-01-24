@@ -1081,6 +1081,23 @@
   color: white; /* Ensures the text color remains white when hovered */
 }
 
+.success-message {
+  display: none;
+  font-size: 1.2rem;
+  color: rgb(0, 187, 255);
+  margin-top: 20px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* Scrollable Image Gallery */
 .contact_image--container {
   text-align: center;
