@@ -1053,12 +1053,12 @@
   border: none;
   border-radius: 4px;
   font-size: 1.2rem;
-  font-weight: 700; /* Increased font weight */
+  font-weight: 700;
   cursor: pointer;
-  position: relative; /* Needed for the pseudo-element */
-  overflow: hidden; /* Ensures pseudo-element is contained */
-  z-index: 1; /* Ensure text is above pseudo-element */
-  transition: color 0.3s ease-in-out; /* Smooth text color transition */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.3s ease-in-out;
 }
 
 .contact-form .submit-button::before {
@@ -1069,8 +1069,8 @@
   width: 100%;
   height: 100%;
   background-color: #38b6ff;
-  transition: left 0.3s ease-in-out; /* Smooth transition effect */
-  z-index: -1; /* Pseudo-element stays below the text */
+  transition: left 0.3s ease-in-out;
+  z-index: -1;
 }
 
 .contact-form .submit-button:hover::before {
@@ -1078,7 +1078,7 @@
 }
 
 .contact-form .submit-button:hover {
-  color: white; /* Ensures the text color remains white when hovered */
+  color: white;
 }
 
 .success-message {
@@ -1095,6 +1095,20 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .contact_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .contact_content {
+    text-align: center;
   }
 }
 
@@ -1155,14 +1169,19 @@
   right: 10px;
 }
 
-/* Mobile Responsive */
-@media screen and (max-width: 1100px) {
+/* Responsive Design */
+@media screen and (max-width: 768px) {
   .gallery-wrapper {
     width: 100%;
   }
 
   .gallery-image-container {
     height: 250px;
+  }
+
+  .gallery-image {
+    height: auto;
+    object-fit: contain;
   }
 }
 
@@ -1172,6 +1191,7 @@
   }
 }
 
+/* Social Links Section */
 .socials-link {
   text-align: center;
   margin-top: 30px;
@@ -1187,18 +1207,20 @@
   display: flex;
   justify-content: center;
   gap: 20px; /* Spacing between icons */
+  flex-wrap: wrap; /* Allow icons to wrap onto new lines */
 }
 
 .social-icon {
-  font-size: 40px; /* Adjust size of icons */
+  font-size: 40px; /* Icon size */
   color: #38b6ff; /* Default color */
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out; /* Smooth scaling effect */
 }
 
 .social-icon:hover {
   transform: scale(1.2); /* Slightly increase size on hover */
 }
 
+/* Different Colors for Social Media Platforms */
 .social-icon:nth-child(1):hover {
   color: #e4405f;
 } /* Instagram color */
@@ -1206,8 +1228,8 @@
   color: #ff0000;
 } /* YouTube color */
 .social-icon:nth-child(3):hover {
-  color: #1da1f2;
-} /* Twitter color */
+  color: #25d366;
+} /* WhatsApp color */
 .social-icon:nth-child(4):hover {
   color: #0a66c2;
 } /* LinkedIn color */
@@ -1215,21 +1237,36 @@
   color: #1877f2;
 } /* Facebook color */
 .social-icon:nth-child(6):hover {
-  color: #1877f2;
-} /* Facebook color */
+  color: #000000;
+} /* Email color */
 
-/* Mobile Responsive */
+/* Responsive Design */
 @media screen and (max-width: 768px) {
   .socials-link p {
-    font-size: 1.2rem;
-  }
-
-  .social-icon {
-    font-size: 35px; /* Adjust size for mobile */
+    font-size: 1.2rem; /* Adjust font size for smaller screens */
   }
 
   .social-icons {
-    gap: 15px;
+    gap: 15px; /* Reduce spacing between icons */
+    flex-wrap: wrap; /* Ensure icons wrap onto new lines if needed */
+  }
+
+  .social-icon {
+    font-size: 35px; /* Smaller icon size for mobile */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .social-icons {
+    gap: 10px; /* Reduce gap further for smaller screens */
+  }
+
+  .social-icon {
+    font-size: 30px; /* Adjust size further for compact screens */
+  }
+
+  .socials-link p {
+    font-size: 1rem; /* Adjust font size for very small screens */
   }
 }
 

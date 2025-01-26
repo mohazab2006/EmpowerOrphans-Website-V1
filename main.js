@@ -82,12 +82,46 @@ function scrollGallery(direction) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("contact-form");
-  const successMessage = document.getElementById("success-message");
+  const form = document.getElementById("contact-form"); // Form element
+  const successMessage = document.getElementById("success-message"); // Success message element
 
+  if (!form) {
+    console.error(
+      "Form element not found. Ensure id='contact-form' is on the <form> element."
+    );
+    return;
+  }
+
+  // Handle form submission
   form.addEventListener("submit", (event) => {
-    event.preventDefault(); // Prevent the default form submission behavior
-    successMessage.style.display = "block"; // Show the thank-you message
-    form.reset(); // Optionally reset the form fields
+    event.preventDefault(); // Prevent default form submission behavior
+    console.log("Form submitted");
+
+    // Get form data
+    const formData = new FormData(form); // This should now work without errors
+    const data = {
+      name: formData.get("name"), // Get "name" field
+      email: formData.get("email"), // Get "email" field
+      message: formData.get("message"), // Get "message" field
+    };
+
+    console.log("Collected form data:", data);
+
+    // Send email using EmailJS
+    emailjs
+      .send("service_h15ioem", "template_7ge6b7f", data, "Pj66D-YH0zgEPA-Iv") // IDs and public key
+      .then(
+        (response) => {
+          console.log("EmailJS SUCCESS:", response.status, response.text); // Log success
+          successMessage.style.display = "block"; // Show success message
+          form.reset(); // Clear form fields
+        },
+        (error) => {
+          console.error("EmailJS FAILED:", error); // Log error
+          alert(
+            "An error occurred while sending your message. Please try again later."
+          );
+        }
+      );
   });
 });
